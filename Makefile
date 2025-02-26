@@ -1,4 +1,4 @@
-SRC = so_long.c get_next_line.c get_next_line_utils.c 
+SRC = so_long.c so_long_utils.c ft_map.c ft_map_utils.c ft_path.c get_next_line.c get_next_line_utils.c
 
 OBJ = $(SRC:.c=.o)
 

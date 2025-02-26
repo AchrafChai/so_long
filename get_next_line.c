@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 14:52:30 by acchairo          #+#    #+#             */
-/*   Updated: 2025/02/19 21:17:47 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/02/25 16:42:09 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		*buff;
 
-	if (BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647 || read(fd, 0, 0) == -1)
+	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647
+		|| read(fd, 0, 0) == -1)
 		return (free(rest), rest = NULL, NULL);
 	buff = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buff)
