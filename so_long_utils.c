@@ -6,12 +6,11 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:31:28 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/03 17:15:53 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/03 23:47:39 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "mlx/mlx.h"
 
 int	ft_fd_get(char *map)
 {
@@ -31,20 +30,20 @@ size_t	ft_valid_strlen(const char *s, t_gg *gg)
 	size_t	i;
 
 	i = 0;
-	if (!(*gg).mlx.mlx)
+	if (!(*gg).mlx)
 	{
-		(*gg).mlx.mlx = mlx_init();
-		if (!(*gg).mlx.mlx)
-			(write(2, "Error\n", 6), exit(1));
+		(*gg).mlx = mlx_init();
+		if (!(*gg).mlx)
+			ft_close("Error\ngame cant opened\n", gg, NULL);
 		else
-			(mlx_get_screen_size((*gg).mlx.mlx, &(*gg).mlx.x, &(*gg).mlx.y));
+			(mlx_get_screen_size((*gg).mlx, &(*gg).x, &(*gg).y));
 	}
 	if (s)
 	{
 		while (s[i] && s[i] != '\n')
 		{
 			i++;
-			if (i >= ((*gg).mlx.x / 32))
+			if (i >= ((*gg).x / 32))
 				return (0);
 		}
 	}

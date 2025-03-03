@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 14:38:33 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/03 17:42:01 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/03 23:35:44 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,42 +16,36 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include "mlx/mlx.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
 
-typedef struct s_player
+# define MLX_PUT mlx_put_image_to_window
+# define MLX_XMP mlx_xpm_file_to_image
+
+typedef struct s_gg
 {
+	void	*mlx;
+	void	*win;
+	int		width;
+	int		height;
 	int		x;
 	int		y;
 	int		player;
 	int		move;
-}	t_player;
-
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
-}	t_mlx;
-
-typedef struct s_gg
-{
-	int			width;
-	int			height;
-	t_player	player;
-	int			door;
-	int			coin;
-	int			i;
-	char		**map;
-	t_mlx		mlx;
-	void		*img_1;
-	void		*img_0;
-	void		*img_p;
-	void		*img_e;
-	void		*img_c;
+	int		px;
+	int		py;
+	int		door;
+	int		coin;
+	int		i;
+	char	**map;
+	void	*img_1;
+	void	*img_0;
+	void	*img_p;
+	void	*img_e;
+	void	*img_c;
 }	t_gg;
 
 int		ft_fd_get(char *map);
@@ -78,7 +72,7 @@ void	move_down(t_gg *gg);
 void	move_left(t_gg *gg);
 
 void	ft_close(char *msg, t_gg *gg, t_gg *cgg);
-void	ft_over(t_gg *gg);
+int		ft_over(t_gg *gg);
 
 size_t	ft_valid_strlen(const char *s, t_gg *gg);
 

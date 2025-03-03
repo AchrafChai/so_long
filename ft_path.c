@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 22:37:30 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/03 17:34:01 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/03 23:32:25 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	ft_path_player(t_gg *gg)
 		{
 			if ((*gg).map[y][x] == 'P')
 			{
-				(*gg).player.x = x;
-				(*gg).player.y = y;
+				(*gg).px = x;
+				(*gg).py = y;
 				break ;
 			}
 			x++;
@@ -38,20 +38,19 @@ void	ft_path_player(t_gg *gg)
 t_gg	ft_path_copy(t_gg *gg)
 {
 	t_gg	cgg;
-	int		i;
 
 	cgg.map = malloc(sizeof(char *) * ((*gg).height + 1));
 	if (!cgg.map)
 		ft_close("Error\ncan't cheack valid path!\n", gg, NULL);
-	i = 0;
-	while ((*gg).map[i])
+	cgg.i = 0;
+	while ((*gg).map[cgg.i])
 	{
-		cgg.map[i] = ft_strdup((*gg).map[i]);
-		if (!cgg.map[i])
+		cgg.map[cgg.i] = ft_strdup((*gg).map[cgg.i]);
+		if (!cgg.map[cgg.i])
 			ft_close("Error\ncan't cheack valid path!\n", gg, &cgg);
-		i++;
+		cgg.i++;
 	}
-	cgg.map[i] = NULL;
+	cgg.map[cgg.i] = NULL;
 	return (cgg);
 }
 
@@ -102,7 +101,7 @@ void	ft_path_check(t_gg *gg)
 
 	ft_path_player(gg);
 	cgg = ft_path_copy(gg);
-	ft_path_fill(*gg, &cgg, (*gg).player.x, (*gg).player.y);
+	ft_path_fill(*gg, &cgg, (*gg).px, (*gg).py);
 	ft_path_valid(gg, &cgg);
-	ft_map_free(&cgg, (*gg).i);
+	ft_map_free(&cgg, cgg.i);
 }

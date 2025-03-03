@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:41:06 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/03 17:25:12 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/03 23:25:10 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,17 @@ void	ft_map_init(t_gg *gg)
 	(*gg).height = 0;
 	(*gg).width = 0;
 	(*gg).coin = 0;
-	(*gg).player.player = 0;
-	(*gg).player.x = 0;
-	(*gg).player.y = 0;
-	(*gg).player.move = 0;
+	(*gg).player = 0;
+	(*gg).px = 0;
+	(*gg).py = 0;
+	(*gg).move = 0;
 	(*gg).door = 0;
 	(*gg).i = 0;
 	(*gg).map = NULL;
-	(*gg).mlx.mlx = NULL;
-	(*gg).mlx.x = 0;
-	(*gg).mlx.y = 0;
+	(*gg).mlx = NULL;
+	(*gg).win = NULL;
+	(*gg).x = 0;
+	(*gg).y = 0;
 	(*gg).img_1 = NULL;
 	(*gg).img_0 = NULL;
 	(*gg).img_e = NULL;
@@ -48,7 +49,7 @@ void	ft_map_height_width(char *map, t_gg *gg)
 		len = ft_valid_strlen(str, gg);
 		free(str);
 		(*gg).height++;
-		if ((*gg).width != len || len < 3 || (*gg).height > ((*gg).mlx.y / 32) - 3)
+		if ((*gg).width != len || len < 3)
 		{
 			(*gg).width = 0;
 			(*gg).height = 0;
@@ -69,7 +70,7 @@ void	ft_map_check_done(char *str, t_gg *gg)
 	while (str[j])
 	{
 		if (str[j] == 'P')
-			(*gg).player.player++;
+			(*gg).player++;
 		else if (str[j] == 'E')
 			(*gg).door++;
 		else if (str[j] == 'C')
