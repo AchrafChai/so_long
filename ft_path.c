@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 22:37:30 by acchairo          #+#    #+#             */
-/*   Updated: 2025/02/26 21:20:03 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/01 19:57:10 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,13 @@ void	ft_path_valid(t_gg *gg, t_gg *cgg)
 			{
 				ft_map_free(cgg, (*gg).i);
 				ft_map_free(gg, (*gg).i);
-				write(2, "Error\n", 6);
-				exit(1);
+				(write(2, "Error\n", 6), exit(1));
 			}
 			if ((*cgg).map[i][j] == 'E')
 			{
 				ft_map_free(cgg, (*gg).i);
 				ft_map_free(gg, (*gg).i);
-				write(2, "Error\n", 6);
-				exit(1);
+				(write(2, "Error\n", 6), exit(1));
 			}
 			j++;
 		}

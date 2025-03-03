@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 14:38:33 by acchairo          #+#    #+#             */
-/*   Updated: 2025/02/26 21:19:49 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/02 18:19:39 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,16 @@ typedef struct s_player
 	int		x;
 	int		y;
 	int		player;
+	int		move;
 }	t_player;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	int		x;
+	int		y;
+}	t_mlx;
 
 typedef struct s_gg
 {
@@ -35,8 +44,15 @@ typedef struct s_gg
 	t_player	player;
 	int			door;
 	int			coin;
-	char		**map;
 	int			i;
+	char		**map;
+	t_mlx		mlx;
+	void		*img_1;
+	void		*img_0;
+	void		*img_p;
+	void		*img_e;
+	void		*img_c;
+
 }	t_gg;
 
 int		ft_fd_get(char *map);
@@ -53,7 +69,17 @@ void	ft_map_free(t_gg *gg, int i);
 void	ft_path_check(t_gg *gg);
 void	ft_path_player(t_gg *gg);
 
-size_t	ft_valid_strlen(const char *s);
+void	ft_game(t_gg *gg);
+int		ft_game_load(t_gg *gg, int *a);
+void	ft_game_build(t_gg *gg, int a);
+int		ft_game_move(int keycode, t_gg *gg);
+void	move_up(t_gg *gg);
+void	move_right(t_gg *gg);
+void	move_down(t_gg *gg);
+void	move_left(t_gg *gg);
+
+
+size_t	ft_valid_strlen(const char *s, t_gg *gg);
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);

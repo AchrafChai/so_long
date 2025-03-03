@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:41:06 by acchairo          #+#    #+#             */
-/*   Updated: 2025/02/26 21:15:44 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/02 18:20:19 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,18 @@ void	ft_map_init(t_gg *gg)
 	(*gg).player.player = 0;
 	(*gg).player.x = 0;
 	(*gg).player.y = 0;
+	(*gg).player.move = 0;
 	(*gg).door = 0;
 	(*gg).i = 0;
 	(*gg).map = NULL;
+	(*gg).mlx.mlx = NULL;
+	(*gg).mlx.x = 0;
+	(*gg).mlx.y = 0;
+	(*gg).img_1 = NULL;
+	(*gg).img_0 = NULL;
+	(*gg).img_e = NULL;
+	(*gg).img_p = NULL;
+	(*gg).img_c = NULL;
 }
 
 void	ft_map_height_width(char *map, t_gg *gg)
@@ -33,19 +42,19 @@ void	ft_map_height_width(char *map, t_gg *gg)
 
 	fd = ft_fd_get(map);
 	str = get_next_line(fd);
-	(*gg).width = ft_valid_strlen(str);
+	(*gg).width = ft_valid_strlen(str, gg);
 	while (str)
 	{
-		len = ft_valid_strlen(str);
+		len = ft_valid_strlen(str, gg);
 		free(str);
-		if ((*gg).width != len || len < 3)
+		(*gg).height++;
+		if ((*gg).width != len || len < 3 || (*gg).height > (*gg).mlx.y / 32)
 		{
-			get_next_line(-1);
-			close(fd);
-			(write(2, "Error\n", 6), exit(1));
+			(*gg).width = 0;
+			(*gg).height = 0;
+			break ;
 		}
 		str = get_next_line(fd);
-		(*gg).height++;
 	}
 	get_next_line(-1);
 	if (fd != -1)
