@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:30:23 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/01 20:11:03 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:31:09 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	ft_map_fill(char *map, t_gg *gg)
 	}
 	(*gg).map[(*gg).i] = NULL;
 	get_next_line(-1);
-	close(fd);
+	if (fd != -1)
+		close(fd);
 }
 
 t_gg	ft_map_get(char *map)
@@ -57,13 +58,13 @@ t_gg	ft_map_get(char *map)
 	ft_map_init(&gg);
 	ft_map_height_width(map, &gg);
 	if ((gg.height * gg.width) < 15 || gg.width < 3 || gg.height < 3)
-		(write(2, "Error\n", 6), exit(1));
+		ft_close("Error\nbig or small map!\n", &gg, NULL);
 	gg.map = malloc(sizeof(char *) * (gg.height + 1));
 	if (!gg.map)
-		(write(2, "Error\n", 6), exit(1));
+		ft_close("Error\ncan't load the map!\n", &gg, NULL);
 	ft_map_fill(map, &gg);
 	ft_map_check(map, &gg);
 	if (gg.player.player != 1 || gg.coin < 1 || gg.door != 1)
-		(write(2, "Error\n", 6), ft_map_free(&gg, gg.i), exit(1));
+		ft_close("Error\nuncomplet map!\n", &gg, NULL);
 	return (gg);
 }

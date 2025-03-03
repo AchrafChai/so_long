@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 14:38:33 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/02 18:19:39 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:42:01 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct s_gg
 	void		*img_p;
 	void		*img_e;
 	void		*img_c;
-
 }	t_gg;
 
 int		ft_fd_get(char *map);
@@ -78,6 +77,8 @@ void	move_right(t_gg *gg);
 void	move_down(t_gg *gg);
 void	move_left(t_gg *gg);
 
+void	ft_close(char *msg, t_gg *gg, t_gg *cgg);
+void	ft_over(t_gg *gg);
 
 size_t	ft_valid_strlen(const char *s, t_gg *gg);
 
@@ -87,4 +88,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1, char const *s2);
 
+void	ft_putchr(int c);
+void	ft_putstr(char *s);
+void	ft_putnbr(int n);
 #endif

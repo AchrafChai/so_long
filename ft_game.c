@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 19:59:28 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/02 18:27:32 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:41:07 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,28 @@ int	ft_game_load(t_gg *gg, int *a)
 
 void	ft_game_build(t_gg *gg, int a)
 {
-	int	i;
-	int j;
+	int	y;
+	int x;
 
-	i = 0;
-	while (i < (*gg).height)
+	y = 0;
+	while (y < (*gg).height)
 	{
-		j = 0;
-		while (j < (*gg).width)
+		x = 0;
+		while (x < (*gg).width)
 		{
-			if ((*gg).map[i][j] == '1')
-				mlx_put_image_to_window((*gg).mlx.mlx, (*gg).mlx.win, (*gg).img_1, a * j, a * i);
-			if ((*gg).map[i][j] == '0')
-				mlx_put_image_to_window((*gg).mlx.mlx, (*gg).mlx.win, (*gg).img_0, a * j, a * i);
-			if ((*gg).map[i][j] == 'E')
-				mlx_put_image_to_window((*gg).mlx.mlx, (*gg).mlx.win, (*gg).img_e, a * j, a * i);
-			if ((*gg).map[i][j] == 'P')
-				mlx_put_image_to_window((*gg).mlx.mlx, (*gg).mlx.win, (*gg).img_p, a * j, a * i);
-			if ((*gg).map[i][j] == 'C')
-				mlx_put_image_to_window((*gg).mlx.mlx, (*gg).mlx.win, (*gg).img_c, a * j, a * i);	
-			j++;
+			if ((*gg).map[y][x] == '1')
+				mlx_put_image_to_window((*gg).mlx.mlx, (*gg).mlx.win, (*gg).img_1, a * x, a * y);
+			if ((*gg).map[y][x] == '0')
+				mlx_put_image_to_window((*gg).mlx.mlx, (*gg).mlx.win, (*gg).img_0, a * x, a * y);
+			if ((*gg).map[y][x] == 'E')
+				mlx_put_image_to_window((*gg).mlx.mlx, (*gg).mlx.win, (*gg).img_e, a * x, a * y);
+			if ((*gg).map[y][x] == 'P')
+				mlx_put_image_to_window((*gg).mlx.mlx, (*gg).mlx.win, (*gg).img_p, a * x, a * y);
+			if ((*gg).map[y][x] == 'C')
+				mlx_put_image_to_window((*gg).mlx.mlx, (*gg).mlx.win, (*gg).img_c, a * x, a * y);	
+			x++;
 		}
-		i++;
+		y++;
 	}
 }
 
@@ -63,15 +63,16 @@ int	ft_game_move(int keycode, t_gg *gg)
 
 	x = (*gg).player.x;
 	y = (*gg).player.y;
-	if (keycode == 119 && (*gg).map[x - 1][y] != '1')
+	if (keycode == 119 && (*gg).map[y - 1][x] != '1')
 		move_up(gg);
-	else if(keycode == 115 && (*gg).map[x + 1][y] != '1')
+	else if(keycode == 115 && (*gg).map[y + 1][x] != '1')
 		move_down(gg);
-	else if(keycode == 100 && (*gg).map[x][y + 1] != '1')
+	else if(keycode == 100 && (*gg).map[y][x + 1] != '1')
 		move_right(gg);
-	else if(keycode == 97 && (*gg).map[x][y - 1] != '1')
+	else if(keycode == 97 && (*gg).map[y][x - 1] != '1')
 		move_left(gg);
-	printf ("%d\n", keycode);
+	else if (keycode == 65307)
+		ft_close("Error\ngame closed!\n", gg, NULL);
 	return (0);  
 }
 
@@ -80,11 +81,12 @@ void	ft_game(t_gg *gg)
 	int	a;
 
 	if (!ft_game_load(gg, &a))
-		return ;
+		ft_close("Error\ncan't load game files!\n", gg, NULL);
 	(*gg).mlx.win = mlx_new_window((*gg).mlx.mlx, (*gg).width * 32, (*gg).height * 32, "game");
 	if (!(*gg).mlx.win)
-		return ;
+		ft_close("Error\ncan't open game!\n", gg, NULL);
 	ft_game_build(gg, a);
-	mlx_key_hook((*gg).mlx.win, ft_game_move, gg);
+	mlx_hook((*gg).mlx.win, 17, 0, ft_over, gg);
+	mlx_hook((*gg).mlx.win, 2, 1L, ft_game_move, gg);
 	mlx_loop((*gg).mlx.mlx);
 }

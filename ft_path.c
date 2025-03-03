@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 22:37:30 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/01 19:57:10 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:34:01 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 void	ft_path_player(t_gg *gg)
 {
-	int	i;
-	int	j;
+	int	x;
+	int	y;
 
-	i = 1;
-	while ((*gg).map[i])
+	y = 1;
+	while ((*gg).map[y])
 	{
-		j = 0;
-		while ((*gg).map[i][j])
+		x = 0;
+		while ((*gg).map[y][x])
 		{
-			if ((*gg).map[i][j] == 'P')
+			if ((*gg).map[y][x] == 'P')
 			{
-				(*gg).player.x = j;
-				(*gg).player.y = i;
+				(*gg).player.x = x;
+				(*gg).player.y = y;
 				break ;
 			}
-			j++;
+			x++;
 		}
-		i++;
+		y++;
 	}
 }
 
@@ -42,14 +42,13 @@ t_gg	ft_path_copy(t_gg *gg)
 
 	cgg.map = malloc(sizeof(char *) * ((*gg).height + 1));
 	if (!cgg.map)
-		(write(2, "Error\n", 6), ft_map_free(gg, (*gg).i), exit(1));
+		ft_close("Error\ncan't cheack valid path!\n", gg, NULL);
 	i = 0;
 	while ((*gg).map[i])
 	{
 		cgg.map[i] = ft_strdup((*gg).map[i]);
 		if (!cgg.map[i])
-			(write(2, "Error\n", 6), ft_map_free(&cgg, i)
-				, ft_map_free(gg, (*gg).i), exit(1));
+			ft_close("Error\ncan't cheack valid path!\n", gg, &cgg);
 		i++;
 	}
 	cgg.map[i] = NULL;
@@ -80,30 +79,20 @@ void	ft_path_fill(t_gg gg, t_gg *cgg, int x, int y)
 
 void	ft_path_valid(t_gg *gg, t_gg *cgg)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 
-	i = 1;
-	while (i < (*gg).height)
+	y = 1;
+	while (y < (*gg).height)
 	{
-		j = 1;
-		while (j < (*gg).width)
+		x = 1;
+		while (x < (*gg).width)
 		{
-			if ((*cgg).map[i][j] == 'C')
-			{
-				ft_map_free(cgg, (*gg).i);
-				ft_map_free(gg, (*gg).i);
-				(write(2, "Error\n", 6), exit(1));
-			}
-			if ((*cgg).map[i][j] == 'E')
-			{
-				ft_map_free(cgg, (*gg).i);
-				ft_map_free(gg, (*gg).i);
-				(write(2, "Error\n", 6), exit(1));
-			}
-			j++;
+			if ((*cgg).map[y][x] == 'C' || (*cgg).map[y][x] == 'E')
+				ft_close("Error\ninvalid map!\n", gg, cgg);
+			x++;
 		}
-		i++;
+		y++;
 	}
 }
 
