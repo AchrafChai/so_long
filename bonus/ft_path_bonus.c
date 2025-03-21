@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 22:37:30 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/05 14:58:32 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/21 23:25:55 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ void	ft_path_fill(t_gg gg, t_gg *cgg, int x, int y)
 		&& (*cgg).map[y - 1][x] != 'M')
 		ft_path_fill(gg, cgg, x, y - 1);
 	if ((*cgg).map[y + 1][x] != '1' && (*cgg).map[y + 1][x] != 'A'
-		&& (*cgg).map[y - 1][x] != 'M')
+		&& (*cgg).map[y + 1][x] != 'M')
 		ft_path_fill(gg, cgg, x, y + 1);
 	if ((*cgg).map[y][x - 1] != '1' && (*cgg).map[y][x - 1] != 'A'
-		&& (*cgg).map[y - 1][x] != 'M')
+		&& (*cgg).map[y][x - 1] != 'M')
 		ft_path_fill(gg, cgg, x - 1, y);
 	if ((*cgg).map[y][x + 1] != '1' && (*cgg).map[y][x + 1] != 'A'
-		&& (*cgg).map[y - 1][x] != 'M')
+		&& (*cgg).map[y][x + 1] != 'M')
 		ft_path_fill(gg, cgg, x + 1, y);
 }
 
