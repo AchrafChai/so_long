@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:31:28 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/05 14:43:51 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:16:21 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	ft_fd_get(char *map)
 	return (fd);
 }
 
-size_t	ft_valid_strlen(const char *s, t_gg *gg)
+int	ft_valid_strlen(const char *s, t_gg *gg)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (!(*gg).mlx)

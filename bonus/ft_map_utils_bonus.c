@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:41:06 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/05 14:55:34 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/21 20:10:53 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,23 @@ void	ft_map_init(t_gg *gg)
 	(*gg).py = 0;
 	(*gg).move = 0;
 	(*gg).door = 0;
+	(*gg).enemy = 0;
 	(*gg).i = 0;
 	(*gg).map = NULL;
 	(*gg).mlx = NULL;
 	(*gg).win = NULL;
+	(*gg).eg = NULL;
 	(*gg).x = 0;
 	(*gg).y = 0;
 	(*gg).img_1 = NULL;
 	(*gg).img_0 = NULL;
 	(*gg).img_e = NULL;
-	(*gg).img_p = NULL;
+	(*gg).img_p1 = NULL;
+	(*gg).img_p2 = NULL;
+	(*gg).img_p3 = NULL;
+	(*gg).img_p4 = NULL;
 	(*gg).img_c = NULL;
-	(*gg).img_m1 = NULL;
-	(*gg).img_m2 = NULL;
-	(*gg).img_m3 = NULL;
-	(*gg).img_m4 = NULL;
-	(*gg).img_m5 = NULL;
+	(*gg).img_m = NULL;
 }
 
 void	ft_map_height_width(char *map, t_gg *gg)
@@ -54,7 +55,7 @@ void	ft_map_height_width(char *map, t_gg *gg)
 		len = ft_valid_strlen(str, gg);
 		free(str);
 		(*gg).height++;
-		if ((*gg).width != len || len < 3)
+		if ((*gg).width != len || len < 3 || (*gg).height > ((*gg).y / 32) - 2)
 		{
 			(*gg).width = 0;
 			(*gg).height = 0;
@@ -80,6 +81,8 @@ void	ft_map_check_done(char *str, t_gg *gg)
 			(*gg).door++;
 		else if (str[j] == 'C')
 			(*gg).coin++;
+		else if (str[j] == 'M')
+			(*gg).enemy++;
 		j++;
 	}
 }

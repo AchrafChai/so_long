@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:41:06 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/03 23:25:10 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:06:08 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_map_height_width(char *map, t_gg *gg)
 		len = ft_valid_strlen(str, gg);
 		free(str);
 		(*gg).height++;
-		if ((*gg).width != len || len < 3)
+		if ((*gg).width != len || len < 3 || (*gg).height > ((*gg).y / 32) - 2)
 		{
 			(*gg).width = 0;
 			(*gg).height = 0;

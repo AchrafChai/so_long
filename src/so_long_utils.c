@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:31:28 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/03 23:47:39 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:07:16 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ int	ft_fd_get(char *map)
 	if (map[width - 4] == '.' && map[width - 3] == 'b'
 		&& map[width - 2] == 'e' && map[width - 1] == 'r')
 		fd = open(map, O_RDONLY);
+	else
+		ft_close("Error\ngame can't opened\n", NULL, NULL);
 	return (fd);
 }
 
-size_t	ft_valid_strlen(const char *s, t_gg *gg)
+int	ft_valid_strlen(const char *s, t_gg *gg)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (!(*gg).mlx)
@@ -43,7 +45,7 @@ size_t	ft_valid_strlen(const char *s, t_gg *gg)
 		while (s[i] && s[i] != '\n')
 		{
 			i++;
-			if (i >= ((*gg).x / 32))
+			if (i > ((*gg).x / 32))
 				return (0);
 		}
 	}

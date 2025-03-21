@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 16:03:13 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/03 23:45:41 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:08:04 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	ft_close(char *msg, t_gg *gg, t_gg *cgg)
 
 int	ft_over(t_gg *gg)
 {
-	ft_close("Error\ngame closed\n", gg, NULL);
+	ft_close("game closed\n", gg, NULL);
+	return (0);
 }
 
 int	main(int argc, char **argv)

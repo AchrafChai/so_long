@@ -6,12 +6,11 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 18:15:31 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/03 23:32:05 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:34:33 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "mlx/mlx.h"
 
 void	move_up(t_gg *gg)
 {
@@ -31,8 +30,10 @@ void	move_up(t_gg *gg)
 	}
 	(*gg).py -= 1;
 	(*gg).move += 1;
-	MLX_PUT((*gg).mlx, (*gg).win, (*gg).img_0, x * 32, y * 32);
-	MLX_PUT((*gg).mlx, (*gg).win, (*gg).img_p, x * 32, (y - 1) * 32);
+	mlx_put_image_to_window((*gg).mlx, (*gg).win,
+		(*gg).img_0, x * 32, y * 32);
+	mlx_put_image_to_window((*gg).mlx, (*gg).win,
+		(*gg).img_p, x * 32, (y - 1) * 32);
 	ft_putnbr((*gg).move);
 	write(1, "\n", 1);
 }
@@ -55,8 +56,10 @@ void	move_down(t_gg *gg)
 	}
 	(*gg).py += 1;
 	(*gg).move += 1;
-	MLX_PUT((*gg).mlx, (*gg).win, (*gg).img_0, x * 32, y * 32);
-	MLX_PUT((*gg).mlx, (*gg).win, (*gg).img_p, x * 32, (y + 1) * 32);
+	mlx_put_image_to_window((*gg).mlx, (*gg).win,
+		(*gg).img_0, x * 32, y * 32);
+	mlx_put_image_to_window((*gg).mlx, (*gg).win,
+		(*gg).img_p, x * 32, (y + 1) * 32);
 	ft_putnbr((*gg).move);
 	write(1, "\n", 1);
 }
@@ -79,8 +82,10 @@ void	move_left(t_gg *gg)
 	}
 	(*gg).px -= 1;
 	(*gg).move += 1;
-	MLX_PUT((*gg).mlx, (*gg).win, (*gg).img_0, x * 32, y * 32);
-	MLX_PUT((*gg).mlx, (*gg).win, (*gg).img_p, (x - 1) * 32, y * 32);
+	mlx_put_image_to_window((*gg).mlx, (*gg).win,
+		(*gg).img_0, x * 32, y * 32);
+	mlx_put_image_to_window((*gg).mlx, (*gg).win,
+		(*gg).img_p, (x - 1) * 32, y * 32);
 	ft_putnbr((*gg).move);
 	write(1, "\n", 1);
 }
@@ -103,8 +108,10 @@ void	move_right(t_gg *gg)
 	}
 	(*gg).px += 1;
 	(*gg).move += 1;
-	MLX_PUT((*gg).mlx, (*gg).win, (*gg).img_0, x * 32, y * 32);
-	MLX_PUT((*gg).mlx, (*gg).win, (*gg).img_p, (x + 1) * 32, y * 32);
+	mlx_put_image_to_window((*gg).mlx, (*gg).win,
+		(*gg).img_0, x * 32, y * 32);
+	mlx_put_image_to_window((*gg).mlx, (*gg).win,
+		(*gg).img_p, (x + 1) * 32, y * 32);
 	ft_putnbr((*gg).move);
 	write(1, "\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 16:03:13 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/05 15:41:59 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/21 20:10:26 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ void	ft_free(t_gg *gg)
 {
 	if (gg)
 	{
-		if ((*gg).img_m1)
-			mlx_destroy_image((*gg).mlx, (*gg).img_m1);
-		if ((*gg).img_m2)
-			mlx_destroy_image((*gg).mlx, (*gg).img_m2);
-		if ((*gg).img_m3)
-			mlx_destroy_image((*gg).mlx, (*gg).img_m3);
-		if ((*gg).img_m4)
-			mlx_destroy_image((*gg).mlx, (*gg).img_m4);
-		if ((*gg).img_m5)
-			mlx_destroy_image((*gg).mlx, (*gg).img_m5);
+		if ((*gg).img_p1)
+			mlx_destroy_image((*gg).mlx, (*gg).img_p1);
+		if ((*gg).img_p2)
+			mlx_destroy_image((*gg).mlx, (*gg).img_p2);
+		if ((*gg).img_p3)
+			mlx_destroy_image((*gg).mlx, (*gg).img_p3);
+		if ((*gg).img_p4)
+			mlx_destroy_image((*gg).mlx, (*gg).img_p4);
+		if ((*gg).eg)
+			free((*gg).eg);
 	}
 }
 
@@ -44,21 +44,21 @@ void	ft_close(char *msg, t_gg *gg, t_gg *cgg)
 			mlx_destroy_image((*gg).mlx, (*gg).img_1);
 		if ((*gg).img_e)
 			mlx_destroy_image((*gg).mlx, (*gg).img_e);
-		if ((*gg).img_p)
-			mlx_destroy_image((*gg).mlx, (*gg).img_p);
+		if ((*gg).img_m)
+			mlx_destroy_image((*gg).mlx, (*gg).img_m);
 		if ((*gg).img_c)
 			mlx_destroy_image((*gg).mlx, (*gg).img_c);
 		if ((*gg).win)
 			mlx_destroy_window((*gg).mlx, (*gg).win);
 		if ((*gg).mlx)
-			mlx_destroy_display((*gg).mlx), free((*gg).mlx);
+			(mlx_destroy_display((*gg).mlx), free((*gg).mlx));
 	}
 	exit(1);
 }
 
 int	ft_over(t_gg *gg)
 {
-	ft_close("Error\ngame closed\n", gg, NULL);
+	ft_close("game closed\n", gg, NULL);
 	return (1);
 }
 

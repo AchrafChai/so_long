@@ -6,13 +6,14 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:30:23 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/03 23:25:18 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:58:35 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h>
 
-void	ft_map_check(char *map, t_gg *gg)
+void	ft_map_check(t_gg *gg)
 {
 	int	i;
 
@@ -63,7 +64,7 @@ t_gg	ft_map_get(char *map)
 	if (!gg.map)
 		ft_close("Error\ncan't load the map!\n", &gg, NULL);
 	ft_map_fill(map, &gg);
-	ft_map_check(map, &gg);
+	ft_map_check(&gg);
 	if (gg.player != 1 || gg.coin < 1 || gg.door != 1)
 		ft_close("Error\nuncomplet map!\n", &gg, NULL);
 	return (gg);

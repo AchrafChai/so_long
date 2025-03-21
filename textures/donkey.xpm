@@ -7,7 +7,7 @@ static char *e3fb46b575c8445782991ad9bf325b23TmYUFgX50ivEEtRa[] = {
 "X c #4F2C14",
 "o c #885B39",
 "O c #D78244",
-"+ c white",
+"+ c #D8B174",
 /* pixels */
 "                                ",
 "                                ",
@@ -35,9 +35,9 @@ static char *e3fb46b575c8445782991ad9bf325b23TmYUFgX50ivEEtRa[] = {
 "         +++.XOOO...OOOOOO.     ",
 "         +++.XXX.. ..OOOOX..    ",
 "         +++.XX..   ...OXXX.    ",
-"         +++.X..      ..XXX.    ",
-"          +++X.        .XX..    ",
-"          ++++.        .XX.     ",
+"         ++..X..      ..XXX.    ",
+"          +..X.        .XX..    ",
+"          +....        .XX.     ",
 "                       ....     ",
 "                                ",
 "                                "

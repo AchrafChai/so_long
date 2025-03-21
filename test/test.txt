@@ -1,5 +1,0 @@
-https://github.com/michmos/42_pipex_tester
-
-./pipex Makefile "./pipex Makefile ls cat /dev/stdout" "./pipex Makefile wc -l cat /dev/stdout" /dev/stdout
-
-don't forget to test cat | cat | ls
