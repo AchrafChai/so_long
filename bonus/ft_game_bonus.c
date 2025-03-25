@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 19:59:28 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/21 20:08:45 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/25 09:02:06 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	ft_game_move(int keycode, t_gg *gg)
 	else if (keycode == 97 && (*gg).map[y][x - 1] != '1')
 		move_left(gg);
 	else if (keycode == 65307)
-		ft_close("game closed!\n", gg, NULL);
+		ft_close("game closed\n", gg, NULL);
 	return (0);
 }
 
@@ -80,11 +80,11 @@ void	ft_game(t_gg *gg)
 	int	a;
 
 	if (!ft_game_load(gg, &a))
-		ft_close("Error\ncan't load game files!\n", gg, NULL);
+		ft_close("Error\ncan't load the game\n", gg, NULL);
 	(*gg).win = mlx_new_window((*gg).mlx, (*gg).width * 32,
-			(*gg).height * 32, "game");
+			(*gg).height * 32, "so_long");
 	if (!(*gg).win)
-		ft_close("Error\ncan't open game!\n", gg, NULL);
+		ft_close("Error\ncan't start the game\n", gg, NULL);
 	ft_get_enemy(gg, a, 0, 0);
 	ft_game_build(gg, a, -1, -1);
 	mlx_hook((*gg).win, 17, 0, ft_over, gg);

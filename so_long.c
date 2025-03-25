@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 16:03:13 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/20 16:08:04 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/25 08:33:24 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 	t_gg	gg;
 
 	if (argc < 2)
-		ft_close("Error\nYou need to enter the map file!\n", NULL, NULL);
+		ft_close("Error\ninvalid map\n", NULL, NULL);
 	gg = ft_map_get(argv[1]);
 	ft_path_check(&gg);
 	ft_game(&gg);

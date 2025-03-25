@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 20:56:42 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/21 20:09:01 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/25 09:00:50 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	ft_get_enemy(t_gg *gg, int a, int x, int y)
 	{
 		(*gg).eg = malloc(sizeof(t_eg) * (*gg).enemy);
 		if (!(*gg).eg)
-			ft_close("Error\n animation problem", gg, NULL);
+			ft_close("Error\ncan't start the game", gg, NULL);
 		while (y < (*gg).height)
 		{
 			x = 0;

@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 14:38:33 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/21 19:45:48 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/25 09:17:11 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_cont(int c);
 char	*ft_itoa(int n);
+void	mlx_put(t_gg gg, void *img, int x, int y);
 
 void	ft_putchr(int c);
 void	ft_putstr(char *s);

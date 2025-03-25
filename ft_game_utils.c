@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 18:15:31 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/20 16:34:33 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/25 08:42:38 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	move_up(t_gg *gg)
 	if ((*gg).map[y - 1][x] == 'E' && (*gg).coin != 0)
 		return ;
 	if ((*gg).map[y - 1][x] == 'E' && (*gg).coin == 0)
-		ft_close("game over!\n", gg, NULL);
+		ft_close("you win\n", gg, NULL);
 	if ((*gg).map[y - 1][x] == 'C')
 	{
 		(*gg).map[y - 1][x] = '0';
@@ -48,7 +48,7 @@ void	move_down(t_gg *gg)
 	if ((*gg).map[y + 1][x] == 'E' && (*gg).coin != 0)
 		return ;
 	if ((*gg).map[y + 1][x] == 'E' && (*gg).coin == 0)
-		ft_close("game over!\n", gg, NULL);
+		ft_close("you win\n", gg, NULL);
 	if ((*gg).map[y + 1][x] == 'C')
 	{
 		(*gg).map[y + 1][x] = '0';
@@ -74,7 +74,7 @@ void	move_left(t_gg *gg)
 	if ((*gg).map[y][x - 1] == 'E' && (*gg).coin != 0)
 		return ;
 	if ((*gg).map[y][x - 1] == 'E' && (*gg).coin == 0)
-		ft_close("game over!\n", gg, NULL);
+		ft_close("you win\n", gg, NULL);
 	if ((*gg).map[y][x - 1] == 'C')
 	{
 		(*gg).map[y][x - 1] = '0';
@@ -100,7 +100,7 @@ void	move_right(t_gg *gg)
 	if ((*gg).map[y][x + 1] == 'E' && (*gg).coin != 0)
 		return ;
 	if ((*gg).map[y][x + 1] == 'E' && (*gg).coin == 0)
-		ft_close("game over!\n", gg, NULL);
+		ft_close("you win\n", gg, NULL);
 	if ((*gg).map[y][x + 1] == 'C')
 	{
 		(*gg).map[y][x + 1] = '0';

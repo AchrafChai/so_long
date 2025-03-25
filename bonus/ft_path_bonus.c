@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 22:37:30 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/21 23:25:55 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/25 08:39:55 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ t_gg	ft_path_copy(t_gg *gg)
 
 	cgg.map = malloc(sizeof(char *) * ((*gg).height + 1));
 	if (!cgg.map)
-		ft_close("Error\ncan't cheack valid path!\n", gg, NULL);
+		ft_close("Error\ninvalid map\n", gg, NULL);
 	cgg.i = 0;
 	while ((*gg).map[cgg.i])
 	{
 		cgg.map[cgg.i] = ft_strdup((*gg).map[cgg.i]);
 		if (!cgg.map[cgg.i])
-			ft_close("Error\ncan't cheack valid path!\n", gg, &cgg);
+			ft_close("Error\ninvalid map\n", gg, &cgg);
 		cgg.i++;
 	}
 	cgg.map[cgg.i] = NULL;
@@ -88,7 +88,7 @@ void	ft_path_valid(t_gg *gg, t_gg *cgg)
 		while (x < (*gg).width)
 		{
 			if ((*cgg).map[y][x] == 'C' || (*cgg).map[y][x] == 'E')
-				ft_close("Error\ninvalid map!\n", gg, cgg);
+				ft_close("Error\ninvalid map\n", gg, cgg);
 			x++;
 		}
 		y++;

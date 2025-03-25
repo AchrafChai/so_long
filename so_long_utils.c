@@ -6,7 +6,7 @@
 /*   By: acchairo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:31:28 by acchairo          #+#    #+#             */
-/*   Updated: 2025/03/20 17:07:16 by acchairo         ###   ########.fr       */
+/*   Updated: 2025/03/25 08:57:27 by acchairo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_fd_get(char *map)
 		&& map[width - 2] == 'e' && map[width - 1] == 'r')
 		fd = open(map, O_RDONLY);
 	else
-		ft_close("Error\ngame can't opened\n", NULL, NULL);
+		ft_close("Error\ncan't open the game\n", NULL, NULL);
 	return (fd);
 }
 
@@ -36,7 +36,7 @@ int	ft_valid_strlen(const char *s, t_gg *gg)
 	{
 		(*gg).mlx = mlx_init();
 		if (!(*gg).mlx)
-			ft_close("Error\ngame cant opened\n", gg, NULL);
+			ft_close("Error\ncan't start the game\n", gg, NULL);
 		else
 			(mlx_get_screen_size((*gg).mlx, &(*gg).x, &(*gg).y));
 	}
